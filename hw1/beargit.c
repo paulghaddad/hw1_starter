@@ -42,7 +42,7 @@ int beargit_init(void) {
 
   FILE* findex = fopen(".beargit/.index", "w");
   fclose(findex);
-  
+
   write_string_to_file(".beargit/.prev", "0000000000000000000000000000000000000000");
 
   return 0;
@@ -139,7 +139,24 @@ int beargit_commit(const char* msg) {
  */
 
 int beargit_status() {
-  /* COMPLETE THE REST */
+  printf("Tracked files:\n\n");
+
+  FILE* findex;
+  if ((findex= fopen(".beargit/.index", "r")) == NULL) {
+    fprintf(stderr, "ERROR: Could not locate index file\n");
+  }
+
+  int files_tracked = 0;
+  char line[FILENAME_SIZE];
+  while (fgets(line, sizeof(line), findex)) {
+    strtok(line, "\n");
+    printf("  %s\n", line);
+    files_tracked++;
+  }
+
+  printf("\n%d files total\n", files_tracked);
+
+  fclose(findex);
 
   return 0;
 }
