@@ -2,6 +2,7 @@
  * This file contains utility functions to use in the homework. Do not modify!
  */
 #include <stdlib.h>
+#include <string.h>
 
 #define ASSERT_ERROR_MESSAGE(fn, msg) \
   if (!(fn)) { \
